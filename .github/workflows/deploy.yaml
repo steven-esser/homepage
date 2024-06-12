@@ -27,12 +27,13 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      
       - name: Generate Static Files
         run: |
-          make html
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+          pelican content -s pelicanconf.py -o output --extra-settings SITEURL='"${{ steps.pages.outputs.base_url }}"'
 
       - name: Upload Static Site Artifact
         uses: actions/upload-pages-artifact@v3

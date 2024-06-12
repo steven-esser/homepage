@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{% block html_lang %}{{ DEFAULT_LANG }}{% endblock html_lang %}">
+<head>
+    {% block head %}
+    <meta charset="utf-8" />
+    <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+    <link href="{{ SITEURL }}/images/favicon.ico" rel="icon">
+    <link href="{{ SITEURL }}/theme/css/main.css" rel="stylesheet">
+    {% endblock head %}
+</head>
+
+<body>
+    <nav>
+        <ul>
+        {% for title, link in MENUITEMS %}
+            <li><a href="{{ link }}">{{ title }}</a></li>
+        {% endfor %}
+        {% if DISPLAY_PAGES_ON_MENU %}
+          {% for p in pages %}
+            <li><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+          {% endfor %}
+        {% endif %}
+        {% if DISPLAY_CATEGORIES_ON_MENU %}
+          {% for cat, null in categories %}
+            <li><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+          {% endfor %}
+        {% endif %}
+        </ul>
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock %}
+    <main>
+</body>
+</html>

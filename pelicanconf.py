@@ -6,6 +6,8 @@ AUTHOR = 'Steven Esser'
 SITENAME = 'stevenesser.com'
 SITEURL = ''
 
+STATIC_PATHS = ['CNAME']
+
 ARTICLE_URL = '{category}/{slug}'
 ARTICLE_SAVE_AS = '{category}/{slug}/index.html'
 DEFAULT_DATE_FORMAT = '%Y-%M-%d'
